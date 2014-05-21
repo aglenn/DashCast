@@ -7,6 +7,7 @@
 //
 
 #import "FWDashboardListManager.h"
+#import "FWDashboard.h"
 
 @implementation FWDashboardListManager
 
@@ -48,4 +49,17 @@ static dispatch_once_t onceToken;
     }
 
 }
+
+-(NSString*)jsonStringRepresentation {
+    NSMutableArray *dictionaryArray = [[NSMutableArray alloc] init];
+    
+    for (FWDashboard *d in _dashboards) {
+        [dictionaryArray addObject:[d dictionaryRepresentation]];
+    }
+    
+    NSData *jsonDict = [NSJSONSerialization dataWithJSONObject:dictionaryArray options:0 error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonDict encoding:NSUTF8StringEncoding];
+    return jsonString;
+}
+
 @end

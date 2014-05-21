@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <GoogleCast/GoogleCast.h>
 
+@class FWDashChannel;
+
 @interface FWCastManager : NSObject <GCKDeviceManagerDelegate, GCKDeviceScannerListener>
 @property GCKDeviceScanner *deviceScanner;
 @property GCKDeviceManager *deviceManager;
+@property GCKApplicationMetadata *applicationMetadata;
+@property FWDashChannel *dashChannel;
 
 +(FWCastManager*)sharedManager;
 -(void)connectToDeviceAtIndex:(uint32_t)index;

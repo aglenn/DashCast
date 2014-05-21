@@ -15,4 +15,6 @@
 
 -(void)loadDashboards;
 -(void)saveDashboards;
+
+-(NSString*)jsonStringRepresentation;
 @end

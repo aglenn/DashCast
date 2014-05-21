@@ -7,6 +7,8 @@
 //
 
 #import "FWCastManager.h"
+#import "FWDashChannel.h"
+#import "FWDashboardListManager.h"
 
 @implementation FWCastManager
 
@@ -54,7 +56,7 @@ static dispatch_once_t onceToken;
 - (void)deviceManagerDidConnect:(GCKDeviceManager *)deviceManager {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ConnectionUpdated" object:self];
     
-    //[self.deviceManager launchApplication:@"APP_ID_HERE"];
+    [self.deviceManager launchApplication:@"8989B5DB"];
     NSLog(@"Connected to %@", deviceManager.device.friendlyName);
 }
 
@@ -62,6 +64,31 @@ static dispatch_once_t onceToken;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ConnectionUpdated" object:self];
     
     NSLog(@"Disconnected from %@ with error: %@", deviceManager.device.friendlyName, error.localizedDescription);
+}
+
+- (void)deviceManager:(GCKDeviceManager *)deviceManager
+didReceiveStatusForApplication:(GCKApplicationMetadata *)applicationMetadata {
+    _applicationMetadata = applicationMetadata;
+    
+    NSLog(@"Received device status: %@", applicationMetadata);
+}
+
+
+- (void)deviceManager:(GCKDeviceManager *)deviceManager
+didConnectToCastApplication:(GCKApplicationMetadata *)applicationMetadata
+            sessionID:(NSString *)sessionID
+  launchedApplication:(BOOL)launchedApplication {
+    NSLog(@"application has launched %hhd", launchedApplication);
+    
+    _dashChannel = [[FWDashChannel alloc] initWithNamespace:@"urn:x-cast:com.findawayworld.dashcast"];
+    [self.deviceManager addChannel:self.dashChannel];
+    
+    [self.dashChannel sendTextMessage:[[FWDashboardListManager sharedManager] jsonStringRepresentation]];
+}
+
+- (void)deviceManager:(GCKDeviceManager *)deviceManager
+didFailToConnectToApplicationWithError:(NSError *)error {
+    NSLog(@"Failed to connect to application with ERROR: %@", error.localizedDescription);
 }
 
 @end

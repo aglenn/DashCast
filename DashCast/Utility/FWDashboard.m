@@ -35,4 +35,8 @@
     [encoder encodeObject:@(self.displayTime) forKey:@"displayTime"];
 }
 
+-(NSDictionary*)dictionaryRepresentation {
+    return @{@"name":_prettyName,@"url":_dasboardURL.absoluteString,@"duration":@(_displayTime)};
+}
+
 @end

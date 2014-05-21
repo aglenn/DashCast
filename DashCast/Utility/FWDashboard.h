@@ -14,4 +14,5 @@
 @property uint64_t displayTime;
 
 -(FWDashboard*)initWithName:(NSString*)name URL:(NSURL*)url displayTime:(uint64_t)displayTime;
+-(NSDictionary*)dictionaryRepresentation;
 @end

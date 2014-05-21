@@ -37,6 +37,7 @@
 		24E9846D192CDEE20000F9C2 /* cast_on0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98461192CDEE20000F9C2 /* cast_on0@2x.png */; };
 		24E9846E192CDEE20000F9C2 /* cast_on1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98462192CDEE20000F9C2 /* cast_on1@2x.png */; };
 		24E9846F192CDEE20000F9C2 /* cast_on2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98463192CDEE20000F9C2 /* cast_on2@2x.png */; };
+		24EC26EC192D4EC4002C15A1 /* FWDashChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC26EB192D4EC4002C15A1 /* FWDashChannel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		24E98461192CDEE20000F9C2 /* cast_on0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_on0@2x.png"; sourceTree = "<group>"; };
 		24E98462192CDEE20000F9C2 /* cast_on1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_on1@2x.png"; sourceTree = "<group>"; };
 		24E98463192CDEE20000F9C2 /* cast_on2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_on2@2x.png"; sourceTree = "<group>"; };
+		24EC26EA192D4EC4002C15A1 /* FWDashChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWDashChannel.h; path = Utility/FWDashChannel.h; sourceTree = "<group>"; };
+		24EC26EB192D4EC4002C15A1 /* FWDashChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWDashChannel.m; path = Utility/FWDashChannel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,8 @@
 				24E9844C192C155C0000F9C2 /* FWDashboardListManager.m */,
 				24E98453192CDD090000F9C2 /* FWCastManager.h */,
 				24E98454192CDD090000F9C2 /* FWCastManager.m */,
+				24EC26EA192D4EC4002C15A1 /* FWDashChannel.h */,
+				24EC26EB192D4EC4002C15A1 /* FWDashChannel.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24EC26EC192D4EC4002C15A1 /* FWDashChannel.m in Sources */,
 				24E98426192C14320000F9C2 /* FWMasterViewController.m in Sources */,
 				24E9844D192C155C0000F9C2 /* FWDashboardListManager.m in Sources */,
 				24E98419192C14320000F9C2 /* main.m in Sources */,
@@ -581,6 +587,7 @@
 				24E98443192C14320000F9C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24E98444192C14320000F9C2 /* Build configuration list for PBXNativeTarget "DashCastTests" */ = {
 			isa = XCConfigurationList;
@@ -589,6 +596,7 @@
 				24E98446192C14320000F9C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
