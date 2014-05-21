@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class FWDetailViewController;
+@class FWAddDashboardViewController;
 
-@interface FWMasterViewController : UITableViewController
+@interface FWMasterViewController : UITableViewController <UIActionSheetDelegate>
 
-@property (strong, nonatomic) FWDetailViewController *detailViewController;
+@property (strong, nonatomic) FWAddDashboardViewController *addDashboardViewController;
 
 @end

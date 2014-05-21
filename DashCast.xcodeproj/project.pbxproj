@@ -16,13 +16,27 @@
 		24E98420192C14320000F9C2 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E9841E192C14320000F9C2 /* Main_iPhone.storyboard */; };
 		24E98423192C14320000F9C2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E98421192C14320000F9C2 /* Main_iPad.storyboard */; };
 		24E98426192C14320000F9C2 /* FWMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E98425192C14320000F9C2 /* FWMasterViewController.m */; };
-		24E98429192C14320000F9C2 /* FWDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E98428192C14320000F9C2 /* FWDetailViewController.m */; };
 		24E9842B192C14320000F9C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24E9842A192C14320000F9C2 /* Images.xcassets */; };
 		24E98432192C14320000F9C2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E98431192C14320000F9C2 /* XCTest.framework */; };
 		24E98433192C14320000F9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E9840C192C14320000F9C2 /* Foundation.framework */; };
 		24E98434192C14320000F9C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E98410192C14320000F9C2 /* UIKit.framework */; };
 		24E9843C192C14320000F9C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24E9843A192C14320000F9C2 /* InfoPlist.strings */; };
 		24E9843E192C14320000F9C2 /* DashCastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E9843D192C14320000F9C2 /* DashCastTests.m */; };
+		24E9844A192C14800000F9C2 /* FWDashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E98449192C14800000F9C2 /* FWDashboard.m */; };
+		24E9844D192C155C0000F9C2 /* FWDashboardListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E9844C192C155C0000F9C2 /* FWDashboardListManager.m */; };
+		24E98450192C18170000F9C2 /* FWAddDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E9844F192C18170000F9C2 /* FWAddDashboardViewController.m */; };
+		24E98452192CDCAC0000F9C2 /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E98451192CDCAC0000F9C2 /* GoogleCast.framework */; };
+		24E98455192CDD090000F9C2 /* FWCastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E98454192CDD090000F9C2 /* FWCastManager.m */; };
+		24E98465192CDEE20000F9C2 /* cast_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98458192CDEE20000F9C2 /* cast_off.png */; };
+		24E98466192CDEE20000F9C2 /* cast_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98459192CDEE20000F9C2 /* cast_on.png */; };
+		24E98467192CDEE20000F9C2 /* cast_on0.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E9845A192CDEE20000F9C2 /* cast_on0.png */; };
+		24E98468192CDEE20000F9C2 /* cast_on1.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E9845B192CDEE20000F9C2 /* cast_on1.png */; };
+		24E98469192CDEE20000F9C2 /* cast_on2.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E9845C192CDEE20000F9C2 /* cast_on2.png */; };
+		24E9846B192CDEE20000F9C2 /* cast_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E9845F192CDEE20000F9C2 /* cast_off@2x.png */; };
+		24E9846C192CDEE20000F9C2 /* cast_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98460192CDEE20000F9C2 /* cast_on@2x.png */; };
+		24E9846D192CDEE20000F9C2 /* cast_on0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98461192CDEE20000F9C2 /* cast_on0@2x.png */; };
+		24E9846E192CDEE20000F9C2 /* cast_on1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98462192CDEE20000F9C2 /* cast_on1@2x.png */; };
+		24E9846F192CDEE20000F9C2 /* cast_on2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E98463192CDEE20000F9C2 /* cast_on2@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,14 +64,31 @@
 		24E98422192C14320000F9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		24E98424192C14320000F9C2 /* FWMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWMasterViewController.h; sourceTree = "<group>"; };
 		24E98425192C14320000F9C2 /* FWMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWMasterViewController.m; sourceTree = "<group>"; };
-		24E98427192C14320000F9C2 /* FWDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWDetailViewController.h; sourceTree = "<group>"; };
-		24E98428192C14320000F9C2 /* FWDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWDetailViewController.m; sourceTree = "<group>"; };
 		24E9842A192C14320000F9C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		24E98430192C14320000F9C2 /* DashCastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DashCastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E98431192C14320000F9C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		24E98439192C14320000F9C2 /* DashCastTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DashCastTests-Info.plist"; sourceTree = "<group>"; };
 		24E9843B192C14320000F9C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24E9843D192C14320000F9C2 /* DashCastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashCastTests.m; sourceTree = "<group>"; };
+		24E98448192C14800000F9C2 /* FWDashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWDashboard.h; path = Utility/FWDashboard.h; sourceTree = "<group>"; };
+		24E98449192C14800000F9C2 /* FWDashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWDashboard.m; path = Utility/FWDashboard.m; sourceTree = "<group>"; };
+		24E9844B192C155C0000F9C2 /* FWDashboardListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWDashboardListManager.h; path = Utility/FWDashboardListManager.h; sourceTree = "<group>"; };
+		24E9844C192C155C0000F9C2 /* FWDashboardListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWDashboardListManager.m; path = Utility/FWDashboardListManager.m; sourceTree = "<group>"; };
+		24E9844E192C18170000F9C2 /* FWAddDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWAddDashboardViewController.h; sourceTree = "<group>"; };
+		24E9844F192C18170000F9C2 /* FWAddDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWAddDashboardViewController.m; sourceTree = "<group>"; };
+		24E98451192CDCAC0000F9C2 /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = DashCast/Libs/GoogleCast.framework; sourceTree = "<group>"; };
+		24E98453192CDD090000F9C2 /* FWCastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWCastManager.h; path = Utility/FWCastManager.h; sourceTree = "<group>"; };
+		24E98454192CDD090000F9C2 /* FWCastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWCastManager.m; path = Utility/FWCastManager.m; sourceTree = "<group>"; };
+		24E98458192CDEE20000F9C2 /* cast_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cast_off.png; sourceTree = "<group>"; };
+		24E98459192CDEE20000F9C2 /* cast_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cast_on.png; sourceTree = "<group>"; };
+		24E9845A192CDEE20000F9C2 /* cast_on0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cast_on0.png; sourceTree = "<group>"; };
+		24E9845B192CDEE20000F9C2 /* cast_on1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cast_on1.png; sourceTree = "<group>"; };
+		24E9845C192CDEE20000F9C2 /* cast_on2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cast_on2.png; sourceTree = "<group>"; };
+		24E9845F192CDEE20000F9C2 /* cast_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_off@2x.png"; sourceTree = "<group>"; };
+		24E98460192CDEE20000F9C2 /* cast_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_on@2x.png"; sourceTree = "<group>"; };
+		24E98461192CDEE20000F9C2 /* cast_on0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_on0@2x.png"; sourceTree = "<group>"; };
+		24E98462192CDEE20000F9C2 /* cast_on1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_on1@2x.png"; sourceTree = "<group>"; };
+		24E98463192CDEE20000F9C2 /* cast_on2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_on2@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E98452192CDCAC0000F9C2 /* GoogleCast.framework in Frameworks */,
 				24E9840F192C14320000F9C2 /* CoreGraphics.framework in Frameworks */,
 				24E98411192C14320000F9C2 /* UIKit.framework in Frameworks */,
 				24E9840D192C14320000F9C2 /* Foundation.framework in Frameworks */,
@@ -106,6 +138,7 @@
 		24E9840B192C14320000F9C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24E98451192CDCAC0000F9C2 /* GoogleCast.framework */,
 				24E9840C192C14320000F9C2 /* Foundation.framework */,
 				24E9840E192C14320000F9C2 /* CoreGraphics.framework */,
 				24E98410192C14320000F9C2 /* UIKit.framework */,
@@ -117,16 +150,18 @@
 		24E98412192C14320000F9C2 /* DashCast */ = {
 			isa = PBXGroup;
 			children = (
+				24E98456192CDEE20000F9C2 /* Resources */,
+				24E98447192C143C0000F9C2 /* Utility */,
 				24E9841B192C14320000F9C2 /* FWAppDelegate.h */,
 				24E9841C192C14320000F9C2 /* FWAppDelegate.m */,
 				24E9841E192C14320000F9C2 /* Main_iPhone.storyboard */,
 				24E98421192C14320000F9C2 /* Main_iPad.storyboard */,
 				24E98424192C14320000F9C2 /* FWMasterViewController.h */,
 				24E98425192C14320000F9C2 /* FWMasterViewController.m */,
-				24E98427192C14320000F9C2 /* FWDetailViewController.h */,
-				24E98428192C14320000F9C2 /* FWDetailViewController.m */,
 				24E9842A192C14320000F9C2 /* Images.xcassets */,
 				24E98413192C14320000F9C2 /* Supporting Files */,
+				24E9844E192C18170000F9C2 /* FWAddDashboardViewController.h */,
+				24E9844F192C18170000F9C2 /* FWAddDashboardViewController.m */,
 			);
 			path = DashCast;
 			sourceTree = "<group>";
@@ -158,6 +193,52 @@
 				24E9843A192C14320000F9C2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24E98447192C143C0000F9C2 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				24E98448192C14800000F9C2 /* FWDashboard.h */,
+				24E98449192C14800000F9C2 /* FWDashboard.m */,
+				24E9844B192C155C0000F9C2 /* FWDashboardListManager.h */,
+				24E9844C192C155C0000F9C2 /* FWDashboardListManager.m */,
+				24E98453192CDD090000F9C2 /* FWCastManager.h */,
+				24E98454192CDD090000F9C2 /* FWCastManager.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		24E98456192CDEE20000F9C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				24E98457192CDEE20000F9C2 /* 1x */,
+				24E9845E192CDEE20000F9C2 /* 2x */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		24E98457192CDEE20000F9C2 /* 1x */ = {
+			isa = PBXGroup;
+			children = (
+				24E98458192CDEE20000F9C2 /* cast_off.png */,
+				24E98459192CDEE20000F9C2 /* cast_on.png */,
+				24E9845A192CDEE20000F9C2 /* cast_on0.png */,
+				24E9845B192CDEE20000F9C2 /* cast_on1.png */,
+				24E9845C192CDEE20000F9C2 /* cast_on2.png */,
+			);
+			path = 1x;
+			sourceTree = "<group>";
+		};
+		24E9845E192CDEE20000F9C2 /* 2x */ = {
+			isa = PBXGroup;
+			children = (
+				24E9845F192CDEE20000F9C2 /* cast_off@2x.png */,
+				24E98460192CDEE20000F9C2 /* cast_on@2x.png */,
+				24E98461192CDEE20000F9C2 /* cast_on0@2x.png */,
+				24E98462192CDEE20000F9C2 /* cast_on1@2x.png */,
+				24E98463192CDEE20000F9C2 /* cast_on2@2x.png */,
+			);
+			path = 2x;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,10 +318,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E98465192CDEE20000F9C2 /* cast_off.png in Resources */,
+				24E9846D192CDEE20000F9C2 /* cast_on0@2x.png in Resources */,
 				24E98423192C14320000F9C2 /* Main_iPad.storyboard in Resources */,
 				24E9842B192C14320000F9C2 /* Images.xcassets in Resources */,
+				24E9846F192CDEE20000F9C2 /* cast_on2@2x.png in Resources */,
 				24E98420192C14320000F9C2 /* Main_iPhone.storyboard in Resources */,
+				24E9846C192CDEE20000F9C2 /* cast_on@2x.png in Resources */,
+				24E9846E192CDEE20000F9C2 /* cast_on1@2x.png in Resources */,
+				24E9846B192CDEE20000F9C2 /* cast_off@2x.png in Resources */,
+				24E98467192CDEE20000F9C2 /* cast_on0.png in Resources */,
+				24E98469192CDEE20000F9C2 /* cast_on2.png in Resources */,
 				24E98417192C14320000F9C2 /* InfoPlist.strings in Resources */,
+				24E98466192CDEE20000F9C2 /* cast_on.png in Resources */,
+				24E98468192CDEE20000F9C2 /* cast_on1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,9 +351,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				24E98426192C14320000F9C2 /* FWMasterViewController.m in Sources */,
+				24E9844D192C155C0000F9C2 /* FWDashboardListManager.m in Sources */,
 				24E98419192C14320000F9C2 /* main.m in Sources */,
-				24E98429192C14320000F9C2 /* FWDetailViewController.m in Sources */,
+				24E98455192CDD090000F9C2 /* FWCastManager.m in Sources */,
 				24E9841D192C14320000F9C2 /* FWAppDelegate.m in Sources */,
+				24E9844A192C14800000F9C2 /* FWDashboard.m in Sources */,
+				24E98450192C18170000F9C2 /* FWAddDashboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,9 +491,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DashCast/Libs",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashCast/DashCast-Prefix.pch";
 				INFOPLIST_FILE = "DashCast/DashCast-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -410,9 +509,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DashCast/Libs",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashCast/DashCast-Prefix.pch";
 				INFOPLIST_FILE = "DashCast/DashCast-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

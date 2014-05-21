@@ -7,12 +7,17 @@
 //
 
 #import "FWMasterViewController.h"
+#import "FWAddDashboardViewController.h"
 
-#import "FWDetailViewController.h"
+#import "FWDashboard.h"
+#import "FWDashboardListManager.h"
+#import "FWCastManager.h"
 
-@interface FWMasterViewController () {
-    NSMutableArray *_objects;
-}
+#import <GoogleCast/GoogleCast.h>
+
+@interface FWMasterViewController()
+@property uint8_t castImageNumber;
+@property UIActionSheet *sheet;
 @end
 
 @implementation FWMasterViewController
@@ -29,12 +34,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (FWDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.addDashboardViewController = (FWAddDashboardViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    [[FWDashboardListManager sharedManager] loadDashboards];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCast) name:@"DevicesUpdated" object:nil];
+    
+    _castImageNumber = 0;
+    
+    [FWCastManager sharedManager];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,10 +62,14 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addObject:) name:@"AddDashboard" object:nil];
+    [self performSegueWithIdentifier:@"AddDashboard" sender:self];
+}
+
+-(void)addObject:(NSNotification*)n {
+    FWDashboard *dashboard = [[FWDashboard alloc] initWithName:n.userInfo[@"name"] URL:n.userInfo[@"url"] displayTime:[(NSNumber*)n.userInfo[@"duration"] longLongValue]];
+    [[FWDashboardListManager sharedManager].dashboards insertObject:dashboard atIndex:0];
+    [[FWDashboardListManager sharedManager] saveDashboards];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -62,15 +83,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [FWDashboardListManager sharedManager].dashboards.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    FWDashboard *dashboard = [FWDashboardListManager sharedManager].dashboards[indexPath.row];
+    cell.textLabel.text = dashboard.prettyName;
     return cell;
 }
 
@@ -83,44 +104,92 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [[FWDashboardListManager sharedManager].dashboards removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
-        self.detailViewController.detailItem = object;
+        FWDashboard *dashboard = [FWDashboardListManager sharedManager].dashboards[indexPath.row];
+        self.addDashboardViewController.dashboard = dashboard;
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"UpdateDashboard"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        FWDashboard *dashboard = [FWDashboardListManager sharedManager].dashboards[indexPath.row];
+        [[segue destinationViewController] setDashboard:dashboard];
     }
+}
+
+-(void)checkCast {
+    if ([FWCastManager sharedManager].deviceScanner.devices.count) {
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+        
+        UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 29, 22)]
+        ;
+        [b addTarget:self action:@selector(pickCast) forControlEvents:UIControlEventTouchUpInside];
+        
+        if ([FWCastManager sharedManager].deviceManager) { // we've tried to connect
+            if ([FWCastManager sharedManager].deviceManager.isConnected) { // connected
+                [b setBackgroundImage:[UIImage imageNamed:@"cast_on.png"] forState:UIControlStateNormal];
+            }
+            else { // still connecting
+                [b setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"cast_on%d.png", _castImageNumber]] forState:UIControlStateNormal];
+                _castImageNumber++;
+                _castImageNumber %= 3;
+                [self performSelector:@selector(checkCast) withObject:nil afterDelay:.75];
+            }
+        }
+        else {
+            [b setBackgroundImage:[UIImage imageNamed:@"cast_off.png"] forState:UIControlStateNormal];
+        }
+        
+        UIBarButtonItem *castButton = [[UIBarButtonItem alloc] initWithCustomView:b];
+        [self.navigationItem setRightBarButtonItems:@[castButton, addButton]];
+    }
+    else {
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+        self.navigationItem.rightBarButtonItem = addButton;
+    }
+}
+
+-(void)pickCast {
+    _sheet = [[UIActionSheet alloc] initWithTitle:@"Select a Device" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles: nil];
+    
+    [_sheet addButtonWithTitle:@"Disconnect"];
+    for( GCKDevice* device in [FWCastManager sharedManager].deviceScanner.devices ){
+        [_sheet addButtonWithTitle:device.friendlyName];
+    }
+    
+    [_sheet addButtonWithTitle:@"Cancel"];
+    
+    [_sheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    NSLog(@"Touched %d", buttonIndex);
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ConnectionUpdated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCast) name:@"ConnectionUpdated" object:nil];
+    
+    if (buttonIndex == 0) {
+        [[FWCastManager sharedManager].deviceManager disconnect];
+        [FWCastManager sharedManager].deviceManager = nil;
+    }
+    else if(buttonIndex == actionSheet.numberOfButtons - 1) {
+        
+    }
+    else {
+        [[FWCastManager sharedManager] connectToDeviceAtIndex:buttonIndex - 1];
+    }
+    
 }
 
 @end
