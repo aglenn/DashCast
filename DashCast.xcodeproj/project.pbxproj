@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24DEDFB5192D870B003E76B0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFB4192D870B003E76B0 /* Parse.framework */; };
+		24DEDFBF192D8762003E76B0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFB6192D8762003E76B0 /* AudioToolbox.framework */; };
+		24DEDFC0192D8762003E76B0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFB7192D8762003E76B0 /* CFNetwork.framework */; };
+		24DEDFC1192D8762003E76B0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFB8192D8762003E76B0 /* CoreLocation.framework */; };
+		24DEDFC2192D8762003E76B0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFB9192D8762003E76B0 /* libz.dylib */; };
+		24DEDFC3192D8762003E76B0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFBA192D8762003E76B0 /* MobileCoreServices.framework */; };
+		24DEDFC4192D8762003E76B0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFBB192D8762003E76B0 /* QuartzCore.framework */; };
+		24DEDFC5192D8762003E76B0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFBC192D8762003E76B0 /* Security.framework */; };
+		24DEDFC6192D8762003E76B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFBD192D8762003E76B0 /* StoreKit.framework */; };
+		24DEDFC7192D8762003E76B0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFBE192D8762003E76B0 /* SystemConfiguration.framework */; };
+		24DEDFCC192D8898003E76B0 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DEDFCB192D8898003E76B0 /* FBMissingSymbols.m */; };
+		24DEDFCD192D88C8003E76B0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFC8192D884E003E76B0 /* Social.framework */; };
+		24DEDFCF192D88D4003E76B0 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEDFCE192D88D4003E76B0 /* Accounts.framework */; };
 		24E9840D192C14320000F9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E9840C192C14320000F9C2 /* Foundation.framework */; };
 		24E9840F192C14320000F9C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E9840E192C14320000F9C2 /* CoreGraphics.framework */; };
 		24E98411192C14320000F9C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E98410192C14320000F9C2 /* UIKit.framework */; };
@@ -51,6 +64,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24DEDFB4192D870B003E76B0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = DashCast/Libs/Parse.framework; sourceTree = "<group>"; };
+		24DEDFB6192D8762003E76B0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		24DEDFB7192D8762003E76B0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		24DEDFB8192D8762003E76B0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24DEDFB9192D8762003E76B0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		24DEDFBA192D8762003E76B0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		24DEDFBB192D8762003E76B0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		24DEDFBC192D8762003E76B0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		24DEDFBD192D8762003E76B0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		24DEDFBE192D8762003E76B0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		24DEDFC8192D884E003E76B0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		24DEDFCB192D8898003E76B0 /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBMissingSymbols.m; path = Utility/FBMissingSymbols.m; sourceTree = "<group>"; };
+		24DEDFCE192D88D4003E76B0 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		24E98409192C14320000F9C2 /* DashCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DashCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E9840C192C14320000F9C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		24E9840E192C14320000F9C2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -99,8 +125,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24E98452192CDCAC0000F9C2 /* GoogleCast.framework in Frameworks */,
+				24DEDFCF192D88D4003E76B0 /* Accounts.framework in Frameworks */,
+				24DEDFCD192D88C8003E76B0 /* Social.framework in Frameworks */,
+				24DEDFBF192D8762003E76B0 /* AudioToolbox.framework in Frameworks */,
+				24DEDFC0192D8762003E76B0 /* CFNetwork.framework in Frameworks */,
+				24DEDFC1192D8762003E76B0 /* CoreLocation.framework in Frameworks */,
+				24DEDFC2192D8762003E76B0 /* libz.dylib in Frameworks */,
+				24DEDFC3192D8762003E76B0 /* MobileCoreServices.framework in Frameworks */,
+				24DEDFC4192D8762003E76B0 /* QuartzCore.framework in Frameworks */,
+				24DEDFC5192D8762003E76B0 /* Security.framework in Frameworks */,
+				24DEDFC6192D8762003E76B0 /* StoreKit.framework in Frameworks */,
+				24DEDFC7192D8762003E76B0 /* SystemConfiguration.framework in Frameworks */,
 				24E9840F192C14320000F9C2 /* CoreGraphics.framework in Frameworks */,
+				24DEDFB5192D870B003E76B0 /* Parse.framework in Frameworks */,
+				24E98452192CDCAC0000F9C2 /* GoogleCast.framework in Frameworks */,
 				24E98411192C14320000F9C2 /* UIKit.framework in Frameworks */,
 				24E9840D192C14320000F9C2 /* Foundation.framework in Frameworks */,
 			);
@@ -141,6 +179,18 @@
 		24E9840B192C14320000F9C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24DEDFCE192D88D4003E76B0 /* Accounts.framework */,
+				24DEDFC8192D884E003E76B0 /* Social.framework */,
+				24DEDFB6192D8762003E76B0 /* AudioToolbox.framework */,
+				24DEDFB7192D8762003E76B0 /* CFNetwork.framework */,
+				24DEDFB8192D8762003E76B0 /* CoreLocation.framework */,
+				24DEDFB9192D8762003E76B0 /* libz.dylib */,
+				24DEDFBA192D8762003E76B0 /* MobileCoreServices.framework */,
+				24DEDFBB192D8762003E76B0 /* QuartzCore.framework */,
+				24DEDFBC192D8762003E76B0 /* Security.framework */,
+				24DEDFBD192D8762003E76B0 /* StoreKit.framework */,
+				24DEDFBE192D8762003E76B0 /* SystemConfiguration.framework */,
+				24DEDFB4192D870B003E76B0 /* Parse.framework */,
 				24E98451192CDCAC0000F9C2 /* GoogleCast.framework */,
 				24E9840C192C14320000F9C2 /* Foundation.framework */,
 				24E9840E192C14320000F9C2 /* CoreGraphics.framework */,
@@ -209,6 +259,7 @@
 				24E98454192CDD090000F9C2 /* FWCastManager.m */,
 				24EC26EA192D4EC4002C15A1 /* FWDashChannel.h */,
 				24EC26EB192D4EC4002C15A1 /* FWDashChannel.m */,
+				24DEDFCB192D8898003E76B0 /* FBMissingSymbols.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -294,6 +345,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Findaway World";
 				TargetAttributes = {
+					24E98408192C14320000F9C2 = {
+						DevelopmentTeam = LW8G2YK29M;
+					};
 					24E9842F192C14320000F9C2 = {
 						TestTargetID = 24E98408192C14320000F9C2;
 					};
@@ -361,6 +415,7 @@
 				24E98419192C14320000F9C2 /* main.m in Sources */,
 				24E98455192CDD090000F9C2 /* FWCastManager.m in Sources */,
 				24E9841D192C14320000F9C2 /* FWAppDelegate.m in Sources */,
+				24DEDFCC192D8898003E76B0 /* FBMissingSymbols.m in Sources */,
 				24E9844A192C14800000F9C2 /* FWDashboard.m in Sources */,
 				24E98450192C18170000F9C2 /* FWAddDashboardViewController.m in Sources */,
 			);
@@ -497,6 +552,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DashCast/Libs",
@@ -506,6 +563,7 @@
 				INFOPLIST_FILE = "DashCast/DashCast-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -515,6 +573,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DashCast/Libs",
@@ -524,6 +584,7 @@
 				INFOPLIST_FILE = "DashCast/DashCast-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

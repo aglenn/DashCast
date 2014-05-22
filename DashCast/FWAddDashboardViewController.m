@@ -8,6 +8,7 @@
 
 #import "FWAddDashboardViewController.h"
 #import "FWDashboard.h"
+#import "FWCastManager.h"
 
 @interface FWAddDashboardViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -57,6 +58,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.nameTextField resignFirstResponder];
+    [self.urlTextField resignFirstResponder];
+    [self.durationTextField resignFirstResponder];
+}
+
 - (IBAction)cancel:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -77,6 +85,7 @@
         [_dashboard setPrettyName:_nameTextField.text];
         [_dashboard setDasboardURL:[NSURL URLWithString:_urlTextField.text]];
         [_dashboard setDisplayTime:_durationTextField.text.longLongValue];
+        [[FWCastManager sharedManager] sendUpdatedDashboards];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else {

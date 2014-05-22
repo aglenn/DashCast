@@ -20,4 +20,6 @@
 +(FWCastManager*)sharedManager;
 -(void)connectToDeviceAtIndex:(uint32_t)index;
 
+-(void)sendUpdatedDashboards;
+
 @end

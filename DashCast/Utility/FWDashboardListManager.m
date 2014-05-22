@@ -8,6 +8,7 @@
 
 #import "FWDashboardListManager.h"
 #import "FWDashboard.h"
+#import <Parse/Parse.h>
 
 @implementation FWDashboardListManager
 
@@ -30,19 +31,65 @@ static dispatch_once_t onceToken;
 }
 
 -(void)saveDashboards {
-    NSUserDefaults *sharedDefaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *sharedDefaults = [NSUserDefaults standardUserDefaults];
+//    
+//    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_dashboards];
+//    [sharedDefaults setObject:data forKey:@"dashboards"];
+//    
+//    [sharedDefaults synchronize];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_dashboards];
-    [sharedDefaults setObject:data forKey:@"dashboards"];
     
-    [sharedDefaults synchronize];
+    PFQuery *query = [PFQuery queryWithClassName:@"DashboardsData"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count) {
+                //NSLog(@"Count is %d", objects.count);
+                PFObject *dashboardsObject = objects[0];
+                dashboardsObject[@"AllData"] = data;
+                [dashboardsObject saveInBackground];
+            }
+            else {
+                //NSLog(@"No count");
+                PFObject *dashboardsObject = [PFObject objectWithClassName:@"DashboardsData"];
+                dashboardsObject[@"AllData"] = data;
+                [dashboardsObject saveInBackground];
+            }
+        }
+        else {
+            NSLog(@"Error");
+        }
+    }];
 }
 
 -(void)loadDashboards {
-    NSUserDefaults *sharedDefaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *sharedDefaults = [NSUserDefaults standardUserDefaults];
+//    
+//    NSData *data = [sharedDefaults objectForKey:@"dashboards"];
+//    _dashboards = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//    
+//    if (!_dashboards) {
+//        _dashboards = [[NSMutableArray alloc] init];
+//    }
+    PFQuery *query = [PFQuery queryWithClassName:@"DashboardsData"];
     
-    NSData *data = [sharedDefaults objectForKey:@"dashboards"];
-    _dashboards = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error && objects.count) {
+
+            PFObject *dashboardsObject = objects[0];
+            NSData *data = dashboardsObject[@"AllData"];
+            _dashboards = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            
+            if (!_dashboards) {
+                _dashboards = [[NSMutableArray alloc] init];
+            }
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DashboardsUpdated" object:self];
+        }
+    }];
+    
+    
     
     if (!_dashboards) {
         _dashboards = [[NSMutableArray alloc] init];

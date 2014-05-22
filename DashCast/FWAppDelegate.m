@@ -7,11 +7,16 @@
 //
 
 #import "FWAppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation FWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [Parse setApplicationId:@"wyIQX2FVvAcctRbUHNVv5eadKblTK4gcjuTINugD"
+                  clientKey:@"ChaOHOeyY7pt27SS389qVEaWwqYEmouPdbSrVqRZ"];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;

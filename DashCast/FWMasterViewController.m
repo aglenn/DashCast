@@ -45,6 +45,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCast) name:@"DevicesUpdated" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:@"DashboardsUpdated" object:nil];
+    
     _castImageNumber = 0;
     
     [FWCastManager sharedManager];
@@ -62,6 +64,7 @@
 
 - (void)insertNewObject:(id)sender
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AddDashboard" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addObject:) name:@"AddDashboard" object:nil];
     [self performSegueWithIdentifier:@"AddDashboard" sender:self];
 }
@@ -72,6 +75,7 @@
     [[FWDashboardListManager sharedManager] saveDashboards];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[FWCastManager sharedManager] sendUpdatedDashboards];
 }
 
 #pragma mark - Table View
@@ -105,6 +109,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [[FWDashboardListManager sharedManager].dashboards removeObjectAtIndex:indexPath.row];
+        [[FWDashboardListManager sharedManager] saveDashboards];
+        [[FWCastManager sharedManager] sendUpdatedDashboards];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

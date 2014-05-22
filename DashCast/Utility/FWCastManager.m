@@ -63,7 +63,7 @@ static dispatch_once_t onceToken;
 -(void)deviceManager:(GCKDeviceManager *)deviceManager didDisconnectWithError:(NSError *)error {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ConnectionUpdated" object:self];
     
-    NSLog(@"Disconnected from %@ with error: %@", deviceManager.device.friendlyName, error.localizedDescription);
+    NSLog(@"Disconnected from %@ with error: %@", deviceManager.device.friendlyName, [GCKError enumDescriptionForCode:error.code]);
 }
 
 - (void)deviceManager:(GCKDeviceManager *)deviceManager
@@ -86,9 +86,15 @@ didConnectToCastApplication:(GCKApplicationMetadata *)applicationMetadata
     [self.dashChannel sendTextMessage:[[FWDashboardListManager sharedManager] jsonStringRepresentation]];
 }
 
+-(void)sendUpdatedDashboards {
+    if (_deviceManager && _deviceManager.isConnected) {
+        [self.dashChannel sendTextMessage:[[FWDashboardListManager sharedManager] jsonStringRepresentation]];
+    }
+}
+
 - (void)deviceManager:(GCKDeviceManager *)deviceManager
 didFailToConnectToApplicationWithError:(NSError *)error {
-    NSLog(@"Failed to connect to application with ERROR: %@", error.localizedDescription);
+    NSLog(@"Failed to connect to application with ERROR: %@", [GCKError enumDescriptionForCode:error.code]);
 }
 
 @end
