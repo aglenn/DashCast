@@ -40,6 +40,7 @@
         [_durationTextField setText:[NSString stringWithFormat:@"%llu", _dashboard.displayTime]];
         
         [_addButton setTitle:@"Update" forState:UIControlStateNormal];
+        [_addButton removeTarget:self action:@selector(addDashboard::) forControlEvents:UIControlEventTouchUpInside];
         [_addButton addTarget:self action:@selector(updateDashboard:) forControlEvents:UIControlEventTouchUpInside];
         [self.navigationItem setTitle:@"Update the dashboard"];
         self.navigationItem.leftBarButtonItem = nil;
