@@ -38,22 +38,22 @@ static dispatch_once_t onceToken;
 //    
 //    [sharedDefaults synchronize];
     
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_dashboards];
     
     PFQuery *query = [PFQuery queryWithClassName:@"DashboardsData"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             if (objects.count) {
+                
                 //NSLog(@"Count is %d", objects.count);
                 PFObject *dashboardsObject = objects[0];
-                dashboardsObject[@"AllData"] = data;
+                dashboardsObject[@"dashboards"] = [self jsonStringRepresentation];
                 [dashboardsObject saveInBackground];
             }
             else {
                 //NSLog(@"No count");
                 PFObject *dashboardsObject = [PFObject objectWithClassName:@"DashboardsData"];
-                dashboardsObject[@"AllData"] = data;
+                dashboardsObject[@"dashboards"] = [self jsonStringRepresentation];
                 [dashboardsObject saveInBackground];
             }
         }
@@ -64,25 +64,21 @@ static dispatch_once_t onceToken;
 }
 
 -(void)loadDashboards {
-//    NSUserDefaults *sharedDefaults = [NSUserDefaults standardUserDefaults];
-//    
-//    NSData *data = [sharedDefaults objectForKey:@"dashboards"];
-//    _dashboards = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//    
-//    if (!_dashboards) {
-//        _dashboards = [[NSMutableArray alloc] init];
-//    }
+
     PFQuery *query = [PFQuery queryWithClassName:@"DashboardsData"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error && objects.count) {
 
             PFObject *dashboardsObject = objects[0];
-            NSData *data = dashboardsObject[@"AllData"];
-            _dashboards = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            NSString *data = dashboardsObject[@"dashboards"];
+            NSArray *dashboardsArray = [NSJSONSerialization JSONObjectWithData:[data dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
             
-            if (!_dashboards) {
-                _dashboards = [[NSMutableArray alloc] init];
+            _dashboards = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *d in dashboardsArray) {
+                FWDashboard *dash = [[FWDashboard alloc] initWithDictionary:d];
+                [_dashboards addObject:dash];
             }
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DashboardsUpdated" object:self];

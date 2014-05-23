@@ -19,20 +19,14 @@
     return self;
 }
 
-- (FWDashboard*)initWithCoder:(NSCoder *)decoder {
+- (FWDashboard*)initWithDictionary:(NSDictionary*) d {
     self = [super init];
     if (self) {
-        self.prettyName = [decoder decodeObjectForKey:@"prettyName"];
-        self.dasboardURL = [decoder decodeObjectForKey:@"dasboardURL"];
-        self.displayTime = [[decoder decodeObjectForKey:@"displayTime"] longLongValue];
+        self.prettyName = [d objectForKey:@"name"];
+        self.dasboardURL = [NSURL URLWithString:[d objectForKey:@"url"]];
+        self.displayTime = [[d objectForKey:@"duration"] longLongValue];
     }
     return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:self.prettyName forKey:@"prettyName"];
-    [encoder encodeObject:self.dasboardURL forKey:@"dasboardURL"];
-    [encoder encodeObject:@(self.displayTime) forKey:@"displayTime"];
 }
 
 -(NSDictionary*)dictionaryRepresentation {

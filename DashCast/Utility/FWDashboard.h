@@ -15,4 +15,5 @@
 
 -(FWDashboard*)initWithName:(NSString*)name URL:(NSURL*)url displayTime:(uint64_t)displayTime;
 -(NSDictionary*)dictionaryRepresentation;
+-(FWDashboard*)initWithDictionary:(NSDictionary*) d;
 @end
